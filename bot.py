@@ -16,8 +16,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "Hi! 👋\n\n"
         "📌 *Usage:*\n"
-        "- In groups: Reply to a message and mention me (e.g., `@convbot1 en`).\n"
-        "- In private chat: Send `lang_code your text` (e.g., `en Hello world`).\n"
+        "- In groups: Reply to a message and mention me (e.g., `@xyzlangbot en`).\n"
+        "- In private chat: Send `lang_code your text` (e.g., `fa Hello world`).\n"
         "- To translate a file: attach the file and set the file caption to the target language (e.g., `ckb`).\n\n"
         "🌐 Example: `ckb Hello friend!` → translates to Kurdish Sorani.",
         parse_mode="Markdown"
@@ -50,7 +50,7 @@ async def translate_reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
             return
 
         translated_text = GoogleTranslator(source='auto', target=target_lang).translate(text_to_translate)
-        await message.reply_text(f"🌐 Translation ({target_lang}):\n{translated_text}", parse_mode="Markdown")
+        await message.reply_text(f"🌐 Translation ({target_lang}):\n{translated_text}")
 
     except Exception as e:
         await message.reply_text(f"⚠️ Translation failed: {e}")
